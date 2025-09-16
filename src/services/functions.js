@@ -46,8 +46,13 @@ export const getPoisson = async (liga, equipo1, equipo2) => {
         })
         return response.data
     } catch (err) {
-        console.error("Error getting favorites:", err.response ? err.response.data : err.message)
-        throw err
+        if (err.response && err.response.data && err.response.data.detail) {
+            console.error("Error:", err.response.data.detail)
+            throw new Error(err.response.data.detail)
+        } else {
+            console.error("Error getting poisson data:", err.message)
+            throw new Error("Ocurrió un error inesperado al obtener los datos.")
+        }
     }
 }
 
@@ -61,8 +66,13 @@ export const getAnalyticsCluster = async (liga, equipo1, equipo2) => {
         })
         return response.data
     } catch (err) {
-        console.error("Error getting favorites:", err.response ? err.response.data : err.message)
-        throw err
+        if (err.response && err.response.data && err.response.data.detail) {
+            console.error("Error:", err.response.data.detail)
+            throw new Error(err.response.data.detail)
+        } else {
+            console.error("Error getting cluster:", err.message)
+            throw new Error("Ocurrió un error inesperado al obtener los datos.")
+        }
     }
 }
 
@@ -76,8 +86,13 @@ export const getPredictionCluster = async (liga, equipo1, equipo2) => {
         })
         return response.data
     } catch (err) {
-        console.error("Error getting favorites:", err.response ? err.response.data : err.message)
-        throw err
+        if (err.response && err.response.data && err.response.data.detail) {
+            console.error("Error:", err.response.data.detail)
+            throw new Error(err.response.data.detail)
+        } else {
+            console.error("Error getting cluster:", err.message)
+            throw new Error("Ocurrió un error inesperado al obtener los datos.")
+        }
     }
 }
 
